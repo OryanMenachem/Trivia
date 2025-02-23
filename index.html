@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="\index.css">
+</head>
+<body>
+    <div class="container">
+        <div id="login-section">
+            <h1>Trivia Game</h1>
+            <input type="password" id="password" placeholder="Enter Password">
+            <button id="login-button">Enter</button>
+            <p id="login-error" class="error-message"></p>
+        </div>
+
+        <div id="quiz-section" style="display:none;">
+            <div id="timer">10</div>
+            <div id="question"></div>
+            <div id="answers">
+                <button class="answer-button" data-index="0"></button>
+                <button class="answer-button" data-index="1"></button>
+                <button class="answer-button" data-index="2"></button>
+                <button class="answer-button" data-index="3"></button>
+            </div>
+            <div id="feedback" class="feedback-message"></div>
+            <button id="next-button">Next Question</button>
+        </div>
+
+        <div id="results-section" style="display:none;">
+            <h1>Results</h1>
+            <p id="score">Your score: 0 / 10</p>
+            <button id="restart-button">Restart</button>
+        </div>
+    </div>
+    <script src="\index.js"></script>
+</body>
+</html>
