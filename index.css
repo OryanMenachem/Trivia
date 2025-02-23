@@ -1,6 +1,7 @@
+--- START OF FILE index.css ---
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f8f8f8; /* קצת אפור בהיר במקום לבן בוהק לרקע */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,17 +10,17 @@ body {
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* לבן עבור הקונטיינר */
+    padding: 30px; /* הגדלתי קצת את הריפוד */
+    border-radius: 12px; /* הגדלתי את עיגול הפינות */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* צל עדין יותר */
     width: 80%;
-    max-width: 600px;
+    max-width: 700px; /* הגדלתי את הרוחב המקסימלי */
     text-align: center;
 }
 
 #login-section, #quiz-section, #results-section {
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
 }
 
 .error-message {
@@ -28,61 +29,77 @@ body {
 }
 
 #timer {
-    font-size: 2em;
+    font-size: 2.5em; /* הגדלתי את גודל הטיימר */
     font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+    color: #b8860b; /* זהב עמום יותר עבור הטיימר */
+    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
 }
 
 #question {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.8em; /* הגדלתי את גודל השאלה */
+    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
+    color: #333; /* צבע טקסט כהה יותר עבור השאלה */
 }
 
 #answers {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px; /* הגדלתי את המרווח בין התשובות */
+    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
 }
 
 .answer-button {
-    padding: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+    padding: 12px 20px; /* ריפוד גדול יותר לכפתורי תשובה */
+    border: 2px solid #b8860b; /* גבול זהב */
+    background-color: #fff; /* רקע לבן לכפתורי תשובה */
+    color: #b8860b; /* טקסט זהב לכפתורי תשובה */
+    border-radius: 8px; /* פינות מעוגלות לכפתורי תשובה */
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em; /* גודל גופן מעט גדול יותר */
+    transition: background-color 0.3s, color 0.3s; /* מעבר חלק עבור ה hover */
 }
 
 .answer-button:hover {
-    background-color: #0056b3;
+    background-color: #b8860b; /* רקע זהב ב-hover */
+    color: #fff; /* טקסט לבן ב-hover */
+    border-color: #fff; /* גבול לבן ב-hover */
 }
 
 .correct {
-    background-color: green;
+    background-color: #aaffaa; /* ירוק בהיר יותר עבור תשובה נכונה */
+    color: #006400; /* ירוק כהה יותר עבור טקסט נכון */
+    border-color: #006400;
 }
 
 .incorrect {
-    background-color: red;
+    background-color: #ffaaaa; /* אדום בהיר יותר עבור תשובה לא נכונה */
+    color: #8b0000; /* אדום כהה יותר עבור טקסט לא נכון */
+    border-color: #8b0000;
 }
 
 .feedback-message {
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
     font-weight: bold;
+    font-size: 1.2em; /* גודל גופן מעט גדול יותר עבור פידבק */
+    color: #555; /* צבע אפור כהה יותר עבור פידבק */
 }
 
-#next-button, #restart-button, #login-button {
-    padding: 10px 20px;
+#next-button, #restart-button, .topic-button { /* הוספתי class חדש עבור כפתורי נושא */
+    padding: 12px 25px; /* ריפוד גדול יותר לכפתורים הראשיים */
     border: none;
-    background-color: #28a745;
+    background-color: #b8860b; /* רקע זהב לכפתורים ראשיים */
     color: white;
-    border-radius: 5px;
+    border-radius: 8px; /* פינות מעוגלות לכפתורים ראשיים */
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1.2em; /* גודל גופן מעט גדול יותר */
+    transition: background-color 0.3s; /* מעבר חלק עבור ה hover */
 }
 
-#next-button:hover, #restart-button:hover, #login-button:hover {
-    background-color: #1e7e34;
+#next-button:hover, #restart-button:hover, .topic-button:hover {
+    background-color: #a07509; /* זהב כהה יותר ב-hover */
+}
+
+/* סגנון ספציפי לכפתורי נושא אם נרצה משהו שונה */
+.topic-button {
+    margin: 10px; /* מרווח בין כפתורי הנושא */
 }

@@ -8,11 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <div id="login-section">
+        <div id="login-section">  <!-- שימו לב, עדיין נקרא login-section, נשנה את ה-ID אם תרצו -->
             <h1>Trivia Game</h1>
-            <input type="password" id="password" placeholder="Enter Password">
-            <button id="login-button">Enter</button>
-            <p id="login-error" class="error-message"></p>
+            <p>Choose a topic:</p>
+            <button class="topic-button" data-topic="animals">Animals</button>
+            <button class="topic-button" data-topic="cities">Cities and Countries</button>
+            <button class="topic-button" data-topic="history">History</button>
+            <button class="topic-button" data-topic="figures">Notable Figures</button>
         </div>
 
         <div id="quiz-section" style="display:none;">

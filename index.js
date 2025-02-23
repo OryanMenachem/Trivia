@@ -1,10 +1,7 @@
-const password = "password123"; // Set your password here
+/*--- START OF FILE index.js ---*/
 const loginSection = document.getElementById("login-section");
 const quizSection = document.getElementById("quiz-section");
 const resultsSection = document.getElementById("results-section");
-const passwordInput = document.getElementById("password");
-const loginButton = document.getElementById("login-button");
-const loginError = document.getElementById("login-error");
 const timerDisplay = document.getElementById("timer");
 const questionDisplay = document.getElementById("question");
 const answersDisplay = document.getElementById("answers");
@@ -12,73 +9,60 @@ const feedbackDisplay = document.getElementById("feedback");
 const nextButton = document.getElementById("next-button");
 const scoreDisplay = document.getElementById("score");
 const restartButton = document.getElementById("restart-button");
+const topicButtons = document.querySelectorAll(".topic-button"); // בוחר את כל כפתורי הנושא
 
 let currentQuestionIndex = 0;
 let score = 0;
 let timer;
 let timeLeft = 10;
-let questions = [
-    {
-        question: "What is the capital of France?",
-        answers: ["Berlin", "Madrid", "Paris", "Rome"],
-        correctAnswer: 2
-    },
-    {
-        question: "What is 2 + 2?",
-        answers: ["3", "4", "5", "6"],
-        correctAnswer: 1
-    },
-    {
-        question: "What year did the Titanic sink?",
-        answers: ["1912", "1920", "1905", "1931"],
-        correctAnswer: 0
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        answers: ["Venus", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: 1
-    },
-    {
-        question: "What is the largest mammal in the world?",
-        answers: ["African Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
-        correctAnswer: 1
-    },
-    {
-        question: "Who painted the Mona Lisa?",
-        answers: ["Michelangelo", "Leonardo da Vinci", "Raphael", "Donatello"],
-        correctAnswer: 1
-    },
-    {
-        question: "What is the chemical symbol for gold?",
-        answers: ["Ag", "Fe", "Au", "Cu"],
-        correctAnswer: 2
-    },
-    {
-        question: "Which country is known as the Land of the Rising Sun?",
-        answers: ["China", "South Korea", "Japan", "Vietnam"],
-        correctAnswer: 2
-    },
-    {
-        question: "What is the speed of light?",
-        answers: ["300,000 km/s", "150,000 km/s", "500,000 km/s", "100,000 km/s"],
-        correctAnswer: 0
-    },
-    {
-        question: "What is the capital of Australia?",
-        answers: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-        correctAnswer: 2
-    }
+let questions = []; // מערך השאלות יהיה דינמי לפי הנושא
+
+// מערכי שאלות לדוגמה - החלף בשאלות אמיתיות!
+const animalsQuestions = [
+    { question: "What is the fastest land animal?", answers: ["Cheetah", "Lion", "Horse", "Elephant"], correctAnswer: 0 },
+    { question: "Which animal is known as the 'king of the jungle'?", answers: ["Lion", "Tiger", "Elephant", "Giraffe"], correctAnswer: 0 },
+    // ... עוד 8 שאלות על חיות
 ];
 
-loginButton.addEventListener("click", () => {
-    if (passwordInput.value === password) {
+const citiesCountriesQuestions = [
+    { question: "What is the capital of Japan?", answers: ["Beijing", "Seoul", "Tokyo", "Shanghai"], correctAnswer: 2 },
+    { question: "Which country is known as the 'Land of the Rising Sun'?", answers: ["China", "Korea", "Japan", "Vietnam"], correctAnswer: 2 },
+    // ... עוד 8 שאלות על ערים ומדינות
+];
+
+const historyQuestions = [
+    { question: "In which year did World War II end?", answers: ["1943", "1945", "1950", "1939"], correctAnswer: 1 },
+    { question: "Who was the first president of the United States?", answers: ["Thomas Jefferson", "John Adams", "George Washington", "Abraham Lincoln"], correctAnswer: 2 },
+    // ... עוד 8 שאלות על היסטוריה
+];
+
+const notableFiguresQuestions = [
+    { question: "Who painted the Mona Lisa?", answers: ["Michelangelo", "Leonardo da Vinci", "Raphael", "Donatello"], correctAnswer: 1 },
+    { question: "Who invented the telephone?", answers: ["Thomas Edison", "Alexander Graham Bell", "Nikola Tesla", "Guglielmo Marconi"], correctAnswer: 1 },
+    // ... עוד 8 שאלות על אישים מפורסמים
+];
+
+
+topicButtons.forEach(button => { // לולאה על כל כפתורי הנושא
+    button.addEventListener("click", () => {
+        const topic = button.dataset.topic;
+        currentQuestionIndex = 0;
+        score = 0;
+        if (topic === "animals") {
+            questions = animalsQuestions;
+        } else if (topic === "cities") {
+            questions = citiesCountriesQuestions;
+        } else if (topic === "history") {
+            questions = historyQuestions;
+        } else if (topic === "figures") {
+            questions = notableFiguresQuestions;
+        }
         loginSection.style.display = "none";
         quizSection.style.display = "block";
         loadQuestion();
-    } else {
-        loginError.textContent = "Incorrect password";
-    }
+    });
 });
+
 
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
@@ -93,9 +77,7 @@ restartButton.addEventListener("click", () => {
     currentQuestionIndex = 0;
     score = 0;
     resultsSection.style.display = "none";
-    loginSection.style.display = "block";
-    loginError.textContent = "";
-    passwordInput.value = "";
+    loginSection.style.display = "block"; // חוזר למסך בחירת הנושא
 });
 
 function loadQuestion() {
@@ -104,6 +86,12 @@ function loadQuestion() {
     nextButton.style.display = "none";
     timeLeft = 10;
     timerDisplay.textContent = timeLeft;
+
+    if (questions.length === 0) { // בדיקה למקרה שאין שאלות בנושא
+        questionDisplay.textContent = "No questions available for this topic yet.";
+        answersDisplay.innerHTML = ""; // מנקה את כפתורי התשובות
+        return;
+    }
 
     let question = questions[currentQuestionIndex];
     questionDisplay.textContent = question.question;
