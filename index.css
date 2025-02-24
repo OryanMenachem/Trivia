@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8; /* קצת אפור בהיר במקום לבן בוהק לרקע */
+    background-color: #f8f8f8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,49 +9,54 @@ body {
 }
 
 .container {
-    background-color: #fff; /* לבן עבור הקונטיינר */
-    padding: 30px; /* הגדלתי קצת את הריפוד */
-    border-radius: 12px; /* הגדלתי את עיגול הפינות */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* צל עדין יותר */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 80%;
-    max-width: 700px; /* הגדלתי את הרוחב המקסימלי */
+    max-width: 700px;
     text-align: center;
-
-    /* Flexbox for even alignment of topic buttons */
     display: flex;
-    flex-direction: row; /* Arrange buttons in a row */
-    justify-content: center; /* Center buttons horizontally */
-    align-items: center; /* Center buttons vertically if needed */
-    flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
-
-    /* Center the container on the page */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin: 0 auto;
-
-    /* Golden shadow around the container */
-    box-shadow: 0 0 15px #FAF0E6; /* Light White Gold shadow */
-    position: relative; /* To contain the absolute positioned exit button */
+    box-shadow: 0 0 15px #FAF0E6;
+    position: relative;
+    overflow: hidden; /* To contain potential overflow */
 }
 
-/* Exit button styling */
 #exit-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 40px; /* Smaller than topic buttons */
-    height: 40px; /* Smaller than topic buttons */
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: none;
-    background-color: #b8860b; /* Match topic button background */
+    background-color: #b8860b; /* Original Gold */
     color: white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em; /* Smaller font size */
+    font-size: 0.8em;
 }
 
 #login-section, #quiz-section, #results-section {
-    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
+    margin-bottom: 30px;
+}
+
+#login-section h1, #login-section p {
+    color: #555;
+}
+
+#topic-buttons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .error-message {
@@ -60,99 +65,226 @@ body {
 }
 
 #timer {
-    font-size: 2.5em; /* הגדלתי את גודל הטיימר */
+    font-size: 1.8em; /* Reduced size */
     font-weight: bold;
-    color: #b8860b; /* זהב עמום יותר עבור הטיימר */
-    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
+    color: #b8860b; /* Original Gold */
+    margin-bottom: 20px;
 }
 
+#question-timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9em;
+    color: #b8860b; /* Gold color for question timer */
+}
+
+
 #question {
-    font-size: 1.8em; /* הגדלתי את גודל השאלה */
-    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
-    color: #333; /* צבע טקסט כהה יותר עבור השאלה */
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 #answers {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px; /* הגדלתי את המרווח בין התשובות */
-    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
 .answer-button {
-    padding: 12px 20px; /* ריפוד גדול יותר לכפתורי תשובה */
-    border: 2px solid #b8860b; /* גבול זהב */
-    background-color: #fff; /* רקע לבן לכפתורי תשובה */
-    color: #b8860b; /* טקסט זהב לכפתורי תשובה */
-    border-radius: 8px; /* פינות מעוגלות לכפתורי תשובה */
+    padding: 12px 20px;
+    border: 2px solid #b8860b; /* Original Gold */
+    background-color: #fff;
+    color: #b8860b; /* Original Gold */
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1em; /* גודל גופן מעט גדול יותר */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* מעבר חלק עבור ה hover */
+    font-size: 1.1em;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .answer-button:hover {
-    background-color: #FAF0E6; /* Light White Gold hover - same as topic buttons */
-    color: #b8860b; /* Keep text gold on hover for contrast */
-    border-color: #FAF0E6; /* Light White Gold border in hover */
+    background-color: #FAF0E6; /* Original Gold Hover */
+    color: #b8860b; /* Original Gold */
+    border-color: #FAF0E6; /* Original Gold Hover */
 }
 
 .correct {
-    background-color: #aaffaa; /* ירוק בהיר יותר עבור תשובה נכונה */
-    color: #006400; /* ירוק כהה יותר עבור טקסט נכון */
+    background-color: #aaffaa;
+    color: #006400;
     border-color: #006400;
 }
 
 .incorrect {
-    background-color: #ffaaaa; /* אדום בהיר יותר עבור תשובה לא נכונה */
-    color: #8b0000; /* אדום כהה יותר עבור טקסט לא נכון */
+    background-color: #ffaaaa;
+    color: #8b0000;
     border-color: #8b0000;
 }
 
 .feedback-message {
-    margin-bottom: 30px; /* הגדלתי את המרווח התחתון */
+    margin-bottom: 30px;
     font-weight: bold;
-    font-size: 1.2em; /* גודל גופן מעט גדול יותר עבור פידבק */
-    color: #555; /* צבע אפור כהה יותר עבור פידבק */
+    font-size: 1.2em;
+    color: #555;
+    text-align: center; /* Center the feedback text */
 }
 
-#next-button, #restart-button, .topic-button { /* הוספתי class חדש עבור כפתורי נושא */
-    padding: 12px 25px; /* ריפוד גדול יותר לכפתורים הראשיים */
+.feedback-message.failure {
+    font-size: 2em; /* Larger failure message */
+    color: #b8860b; /* Original Gold - Button Color */
+    position: absolute; /* Center on screen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* White background for failure message */
+    padding: 20px;
+    z-index: 10; /* Ensure it's on top of other content */
+    flex-direction: column; /* Stack text and potential buttons vertically */
+}
+
+.feedback-message.failure p {
+    margin: 0; /* Remove default paragraph margins */
+}
+
+
+#next-button, #restart-button, #random-button {
+    padding: 12px 25px;
     border: none;
-    background-color: #b8860b; /* רקע זהב לכפתורים ראשיים */
+    background-color: #b8860b; /* Original Gold */
     color: white;
-    border-radius: 8px; /* פינות מעוגלות לכפתורים ראשיים */
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.2em; /* גודל גופן מעט גדול יותר */
-    transition: background-color 0.3s; /* מעבר חלק עבור ה hover */
+    font-size: 1.2em;
+    transition: background-color 0.3s;
 }
 
-#next-button:hover, #restart-button:hover, .topic-button:hover {
-    background-color: #FAF0E6; /* Light White Gold hover */
-    color: #b8860b; /* Keep text gold on hover for contrast */
+#next-button:hover, #restart-button:hover, #random-button:hover {
+    background-color: #FAF0E6; /* Original Gold Hover */
+    color: #b8860b; /* Original Gold */
 }
 
-/* סגנון ספציפי לכפתורי נושא אם נרצה משהו שונה */
 .topic-button {
-    margin: 10px; /* מרווח בין כפתורי הנושא */
-    border-radius: 50%; /* הופך את הכפתורים למעוגלים */
-    width: 100px; /* רוחב קבוע */
-    height: 100px; /* גובה קבוע - שווה לרוחב עבור עיגול מושלם */
-    display: inline-flex; /* שימוש ב-flexbox ליישור הטקסט */
-    justify-content: center; /* מרכוז אופקי של הטקסט */
-    align-items: center; /* מרכוז אנכי של הטקסט */
-    padding: 0; /* הסרת padding ברירת מחדל כדי למנוע בעיות עם גודל קבוע */
-    font-size: 1em; /* גודל גופן מותאם לכפתורים הקטנים יותר */
-    background-color: #b8860b; /* זהב עמום יותר לכפתורים ראשיים */
+    margin: 10px;
+    border-radius: 50%;
+    width: 80px; /* Equal width and height for circle */
+    height: 80px; /* Equal width and height for circle */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 1em;
+    background-color: #b8860b; /* Original Gold */
     color: white;
-    transition: background-color 0.3s; /* Smooth transition for hover */
+    transition: background-color 0.3s;
+    border: none; /* Remove default borders */
 }
 
 .topic-button:hover {
-    background-color: #FAF0E6; /* Light White Gold hover */
-    color: #b8860b; /* Keep text gold on hover for contrast */
+    background-color: #FAF0E6; /* Original Gold Hover */
+    color: #b8860b; /* Original Gold */
 }
 
 #exit-button:hover {
-    background-color: #FAF0E6; /* Light White Gold hover for exit button */
-    color: #b8860b; /* Keep text gold on hover for exit button */
+    background-color: #FAF0E6; /* Original Gold Hover */
+    color: #b8860b; /* Original Gold */
+}
+
+#random-button {
+    /* Inherits topic-button styles, circular and same size */
+    margin: 10px; /* Ensure consistent margins */
+}
+
+
+/* Hearts Styling */
+#hearts {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+}
+
+.heart {
+    font-size: 24px;
+    color: red; /* Original Red */
+    margin-right: 5px;
+    transition: color 0.5s, transform 0.5s, opacity 0.5s; /* Smooth transitions for bleed effect */
+}
+
+.heart.hidden {
+    display: none;
+}
+
+.heart.explode {
+    animation: explode 0.5s forwards; /* Kept explode for scale out, can rename if needed */
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.heart.bleed {
+    animation: heart-bleed 0.5s forwards;
+}
+
+@keyframes heart-bleed {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        color: red;
+    }
+    50% {
+        color: darkred; /* Darker red for bleed effect */
+    }
+    100% {
+        transform: scale(0); /* Scale down to disappear */
+        opacity: 0;
+        color: darkred; /* Ensure final color is dark red */
+    }
+}
+
+
+/* Results Animation Styling */
+#results-animation {
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #333;
+}
+
+#results-animation p {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Move down slightly */
+    animation: fadeInUp 0.8s forwards ease-out;
+}
+
+#results-animation p:nth-child(1) {
+    animation-delay: 0.2s; /* Stagger animations */
+}
+
+#results-animation p:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Confetti Styling - Removed */
+#confetti-container {
+    display: none; /* Hide confetti container if not used */
 }

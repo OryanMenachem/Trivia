@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <button id="exit-button">Exit</button> <!-- Exit button in top right -->
+    <div id="confetti-container"></div>
+    <button id="exit-button">Exit</button>
     <div class="container">
-        <div id="login-section">  <!-- שימו לב, עדיין נקרא login-section, נשנה את ה-ID אם תרצו -->
+        <div id="login-section">
             <h1>Trivia Game</h1>
             <p>Choose a topic:</p>
-            <button class="topic-button" data-topic="animals">Animals</button>
-            <button class="topic-button" data-topic="cities">Cities and Countries</button>
-            <button class="topic-button" data-topic="history">History</button>
-            <button class="topic-button" data-topic="figures">Notable Figures</button>
+            <div id="topic-buttons-container">
+                <button class="topic-button" data-topic="animals">Animals</button>
+                <button class="topic-button" data-topic="cities">Cities</button>
+                <button class="topic-button" data-topic="history">History</button>
+                <button class="topic-button" data-topic="figures">Figures</button>
+                <button id="random-button" class="topic-button">Random</button>
+            </div>
         </div>
 
         <div id="quiz-section" style="display:none;">
-            <div id="timer">10</div>
+            <div id="question-timer"></div> <div id="hearts">
+                <span id="heart1" class="heart">❤️</span>
+                <span id="heart2" class="heart">❤️</span>
+                <span id="heart3" class="heart">❤️</span>
+            </div>
+            <div id="timer">2:00</div>
             <div id="question"></div>
             <div id="answers">
                 <button class="answer-button" data-index="0"></button>
@@ -33,7 +42,11 @@
 
         <div id="results-section" style="display:none;">
             <h1>Results</h1>
-            <p id="score">Your score: 0 / 10</p>
+            <div id="results-animation">
+                <p id="correct-answers-result">Correct answers: 0</p>
+                <p id="incorrect-answers-result">Incorrect answers: 0</p>
+            </div>
+            <p id="final-score">Your score: 0 / 10</p>
             <button id="restart-button">Restart</button>
         </div>
     </div>
