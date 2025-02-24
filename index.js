@@ -10,6 +10,7 @@ const nextButton = document.getElementById("next-button");
 const scoreDisplay = document.getElementById("score");
 const restartButton = document.getElementById("restart-button");
 const topicButtons = document.querySelectorAll(".topic-button"); // בוחר את כל כפתורי הנושא
+const exitButton = document.getElementById("exit-button"); // Exit button
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -76,6 +77,12 @@ nextButton.addEventListener("click", () => {
 restartButton.addEventListener("click", () => {
     currentQuestionIndex = 0;
     score = 0;
+    resultsSection.style.display = "none";
+    loginSection.style.display = "block"; // חוזר למסך בחירת הנושא
+});
+
+exitButton.addEventListener("click", () => {
+    quizSection.style.display = "none";
     resultsSection.style.display = "none";
     loginSection.style.display = "block"; // חוזר למסך בחירת הנושא
 });

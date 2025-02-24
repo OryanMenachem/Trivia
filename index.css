@@ -1,4 +1,3 @@
---- START OF FILE index.css ---
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8; /* קצת אפור בהיר במקום לבן בוהק לרקע */
@@ -17,6 +16,38 @@ body {
     width: 80%;
     max-width: 700px; /* הגדלתי את הרוחב המקסימלי */
     text-align: center;
+
+    /* Flexbox for even alignment of topic buttons */
+    display: flex;
+    flex-direction: row; /* Arrange buttons in a row */
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center; /* Center buttons vertically if needed */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+
+    /* Center the container on the page */
+    margin: 0 auto;
+
+    /* Golden shadow around the container */
+    box-shadow: 0 0 15px #FAF0E6; /* Light White Gold shadow */
+    position: relative; /* To contain the absolute positioned exit button */
+}
+
+/* Exit button styling */
+#exit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px; /* Smaller than topic buttons */
+    height: 40px; /* Smaller than topic buttons */
+    border-radius: 50%;
+    border: none;
+    background-color: #b8860b; /* Match topic button background */
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em; /* Smaller font size */
 }
 
 #login-section, #quiz-section, #results-section {
@@ -56,13 +87,13 @@ body {
     border-radius: 8px; /* פינות מעוגלות לכפתורי תשובה */
     cursor: pointer;
     font-size: 1.1em; /* גודל גופן מעט גדול יותר */
-    transition: background-color 0.3s, color 0.3s; /* מעבר חלק עבור ה hover */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* מעבר חלק עבור ה hover */
 }
 
 .answer-button:hover {
-    background-color: #b8860b; /* רקע זהב ב-hover */
-    color: #fff; /* טקסט לבן ב-hover */
-    border-color: #fff; /* גבול לבן ב-hover */
+    background-color: #FAF0E6; /* Light White Gold hover - same as topic buttons */
+    color: #b8860b; /* Keep text gold on hover for contrast */
+    border-color: #FAF0E6; /* Light White Gold border in hover */
 }
 
 .correct {
@@ -96,10 +127,32 @@ body {
 }
 
 #next-button:hover, #restart-button:hover, .topic-button:hover {
-    background-color: #a07509; /* זהב כהה יותר ב-hover */
+    background-color: #FAF0E6; /* Light White Gold hover */
+    color: #b8860b; /* Keep text gold on hover for contrast */
 }
 
 /* סגנון ספציפי לכפתורי נושא אם נרצה משהו שונה */
 .topic-button {
     margin: 10px; /* מרווח בין כפתורי הנושא */
+    border-radius: 50%; /* הופך את הכפתורים למעוגלים */
+    width: 100px; /* רוחב קבוע */
+    height: 100px; /* גובה קבוע - שווה לרוחב עבור עיגול מושלם */
+    display: inline-flex; /* שימוש ב-flexbox ליישור הטקסט */
+    justify-content: center; /* מרכוז אופקי של הטקסט */
+    align-items: center; /* מרכוז אנכי של הטקסט */
+    padding: 0; /* הסרת padding ברירת מחדל כדי למנוע בעיות עם גודל קבוע */
+    font-size: 1em; /* גודל גופן מותאם לכפתורים הקטנים יותר */
+    background-color: #b8860b; /* זהב עמום יותר לכפתורים ראשיים */
+    color: white;
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.topic-button:hover {
+    background-color: #FAF0E6; /* Light White Gold hover */
+    color: #b8860b; /* Keep text gold on hover for contrast */
+}
+
+#exit-button:hover {
+    background-color: #FAF0E6; /* Light White Gold hover for exit button */
+    color: #b8860b; /* Keep text gold on hover for exit button */
 }
